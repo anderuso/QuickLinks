@@ -1,0 +1,28 @@
+{
+	"manifest_version": 2,
+	"name": "QuickLinks",
+	"version": "0.1",
+
+	"description": "Create your own set of links with very quick access.",
+
+	"icons": {
+		"48": "icons/QuickLinks.png"
+	},
+
+	"permissions":
+	[
+		"activeTab",
+		"storage"
+	],
+
+	"browser_action": {
+		"browser_style": false,
+		"default_icon": "icons/QuickLinks.png",
+		"default_title": "QuickLinks",
+		"default_popup": "popup/show_links.html"
+	},
+
+	"options_ui": {
+		"page": "options.html"
+	}
+}
