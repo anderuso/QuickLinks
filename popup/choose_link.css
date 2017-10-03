@@ -19,18 +19,20 @@ html, body {
 
 .site {
 	background-color: #101010;
-	color: #EEEEEE;
+	color: #DDDDDD;
 }
 
 .site:hover {
 	background-color: #707070;
+	color: #DDDDDD;
+}
+
+.options {
+	background-color: #303030;
 	color: #EEEEEE;
 }
 
-.clear {
- background-color: #FBFBC9;
-}
-
-.clear:hover {
- background-color: #EAEAC9;
+.options:hover {
+	background-color: #EEEEEE;
+	color: black;
 }
