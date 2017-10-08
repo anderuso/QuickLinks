@@ -8,7 +8,19 @@
   <body>
 
     <form>
-        <label>Link: <input type="text" id="link" ></label>
+		<h3>Links</h3>
+		<div id="links">
+		</div>
+		<div id="newLinkDiv">
+			<h4>New link</h4>
+			<label>Link: <input type="text" id="newLinkText" ></label>
+			<button type="button" id="addLinkButton">Add</button>
+		</div>
+		<div id="updateLinkDiv" style="display:none">
+			<h4>Update link</h4>
+			<label>Link: <input type="text" id="updateLinkText" ><input type="hidden" id="linkIndex" ></label>
+			<button type="button" id="updateLinkButton">Update</button>
+		</div>
         <button type="submit">Save</button>
     </form>
 
