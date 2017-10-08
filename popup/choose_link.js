@@ -16,18 +16,23 @@ function createLink(linkUrl) {
 
 function onGot(item) {
 	var linksDiv = document.getElementById("links");
-	if (item.link)
+	linksDiv.innerHTML = "";
+	if (item.links)
 	{
-		var optionLink = createLink(item.link)
+		for (i = 0; i < item.links.length; i++)
+		{
+			var optionLink = createLink(item.links[i])
+			linksDiv.appendChild(optionLink);
+		}
 	}
 	else
 	{
 		var optionLink = createLink("Nothing found in options")
+		linksDiv.appendChild(optionLink);
 	}
-	linksDiv.appendChild(optionLink);
 }
 
-var getting = browser.storage.local.get("link");
+var getting = browser.storage.local.get("links");
 getting.then(onGot, onError);
 
 document.addEventListener("click", (e) => {
@@ -36,6 +41,7 @@ document.addEventListener("click", (e) => {
 
 	var creating = browser.tabs.create({url: "https://" + chosenBeastURL});
 	creating.then(onCreated, onError);
+	window.close();
   }
   else if (e.target.classList.contains("options")) {
 	browser.runtime.openOptionsPage()  }
