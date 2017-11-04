@@ -19,7 +19,7 @@
 		"browser_style": false,
 		"default_icon": "icons/QuickLinks.png",
 		"default_title": "QuickLinks",
-		"default_popup": "popup/show_links.html"
+		"default_popup": "popup/popup.html"
 	},
 
 	"options_ui": {
