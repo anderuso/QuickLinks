@@ -1,0 +1,27 @@
+th {
+	text-align: left;
+}
+th.title {
+	width: 20%;
+}
+th.url {
+	width: 75%;
+}
+th.key {
+	width: 5%;
+}
+
+input.title {
+	width: 95%;
+	margin: auto;
+}
+
+input.url {
+	width: 95%;
+	margin: auto;
+}
+
+input.key {
+	width: 1em;
+	margin: auto;
+}

@@ -10,39 +10,68 @@ function saveOptions(e)
 
 function showUpdateButton()
 {
-	document.getElementById("newLinkDiv").style.display = "none";
-	document.getElementById("updateLinkDiv").style.display = "block";
+	var button = document.getElementById("addUpdateLinkButton");
+	button.textContent = "Update";
+	button.disabled = false;
 }
 
 function showAddButton()
 {
-	document.getElementById("newLinkDiv").style.display = "block";
-	document.getElementById("updateLinkDiv").style.display = "none";
+	var button = document.getElementById("addUpdateLinkButton");
+	button.textContent = "Add";
+	button.disabled = true;
 }
 
-function addLink() 
+function addOrUpdateLink()
 {
-	var linkTextInput = document.getElementById("newLinkText");
-	_links.push(linkTextInput.value);
+	var button = document.getElementById("addUpdateLinkButton");
+	if (button.textContent == "Add")
+	{
+		console.log("addLink");
+		addLink();
+	}
+	else if (button.textContent == "Update")
+	{
+		console.log("updateLink");
+		updateLink();
+	}
+	else
+	{
+		console.log(`Uknown button text: ${button.textContent}`);
+	}
+}
+
+function addLink()
+{
+	var linkTitleInput = document.getElementById("linkTitle");
+	var linkUrlInput = document.getElementById("linkUrl");
+	var linkKeyInput = document.getElementById("linkKey");
+	_links.push({title: linkTitleInput.value, url: new URL(linkUrlInput.value).href, key: linkKeyInput.value});
 	showLinks();
-	linkTextInput.value = "";
+	linkTitleInput.value = "";
+	linkUrlInput.value = "";
+	linkKeyInput.value = "";
 }
 
 function updateLink() 
 {
-	var linkTextInput = document.getElementById("updateLinkText");
+	var linkTitleInput = document.getElementById("linkTitle");
+	var linkUrlInput = document.getElementById("linkUrl");
+	var linkKeyInput = document.getElementById("linkKey");
 	var linkIndexInput = document.getElementById("linkIndex");
 	var index = parseInt(linkIndexInput.value);
 	if (index != Number.NaN)
 	{
-		_links[index] = linkTextInput.value;
+		_links[index] = {title: linkTitleInput.value, url: new URL(linkUrlInput.value).href, key: linkKeyInput.value};
 		showLinks();
-		linkTextInput.value = "";
+		linkTitleInput.value = "";
+		linkUrlInput.value = "";
+		linkKeyInput.value = "";
 		linkIndexInput.value = "";
 	}
 	else
 	{
-		console.log(`Update link index is undefined: ${updateLinkText.value}`);
+		console.log(`Update link index is undefined: ${linkIndexInput.value}`);
 	}
 	showAddButton();
 }
@@ -53,9 +82,14 @@ function editLink()
 	var index = Number(editBtn.id);
 	if (typeof index !== "undefined")
 	{
-		var linkTextInput = document.getElementById("updateLinkText");
+		var linkTitleInput = document.getElementById("linkTitle");
+		var linkUrlInput = document.getElementById("linkUrl");
+		var linkKeyInput = document.getElementById("linkKey");
 		var linkIndexInput = document.getElementById("linkIndex");
-		linkTextInput.value = _links[index];
+		var linkData = _links[index];
+		linkTitleInput.value = linkData.title;
+		linkUrlInput.value = linkData.url;
+		linkKeyInput.value = linkData.key;
 		linkIndexInput.value = index;
 		showUpdateButton();
 	}
@@ -97,11 +131,28 @@ function showLinks()
 		editBtn.type = "button";
 		editBtn.id = i;
 		editBtn.addEventListener("click", editLink);
-		linkDiv.textContent = _links[i];
+		linkDiv.textContent = _links[i].title + " " + _links[i].url + " " + _links[i].key;
 		linkDiv.appendChild(editBtn);
 		linkDiv.appendChild(removeBtn);
 		linksDiv.appendChild(linkDiv);
 	}
+}
+
+function validateUrl()
+{
+    var addBtn = document.getElementById("addUpdateLinkButton");
+	var linkTitleInput = document.getElementById("linkTitle");
+	var linkUrlInput = document.getElementById("linkUrl");
+	try
+	{
+		var url = new URL(linkUrlInput.value);
+		validUrl = true;
+	}
+	catch(err)
+	{
+		validUrl = false;
+	}
+	addBtn.disabled = !(validUrl && linkTitleInput.value.length > 0);
 }
 
 function restoreOptions() 
@@ -127,5 +178,6 @@ function restoreOptions()
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("form").addEventListener("submit", saveOptions);
-document.getElementById("addLinkButton").addEventListener("click", addLink);
-document.getElementById("updateLinkButton").addEventListener("click", updateLink);
+document.getElementById("addUpdateLinkButton").addEventListener("click", addOrUpdateLink);
+document.getElementById("linkTitle").addEventListener("input", validateUrl);
+document.getElementById("linkUrl").addEventListener("input", validateUrl);

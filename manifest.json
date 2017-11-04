@@ -3,7 +3,7 @@
 	"name": "QuickLinks",
 	"version": "0.1",
 
-	"description": "Create your own set of links with very quick access.",
+	"description": "Create your own set of links for very quick access to your favorite sites.",
 
 	"icons": {
 		"48": "icons/QuickLinks.png"
@@ -19,7 +19,7 @@
 		"browser_style": false,
 		"default_icon": "icons/QuickLinks.png",
 		"default_title": "QuickLinks",
-		"default_popup": "popup/show_links.html"
+		"default_popup": "popup/popup.html"
 	},
 
 	"options_ui": {
