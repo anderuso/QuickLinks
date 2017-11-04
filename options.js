@@ -20,24 +20,32 @@ function showAddButton()
 	document.getElementById("updateLinkDiv").style.display = "none";
 }
 
-function addLink() 
+function addLink()
 {
-	var linkTextInput = document.getElementById("newLinkText");
-	_links.push(linkTextInput.value);
+	var linkTitleInput = document.getElementById("newLinkTitle");
+	var linkUrlInput = document.getElementById("newLinkUrl");
+	var linkKeyInput = document.getElementById("newLinkKey");
+	_links.push({title: linkTitleInput.value, url: linkUrlInput.value, key: linkKeyInput.value});
 	showLinks();
-	linkTextInput.value = "";
+	linkTitleInput.value = "";
+	linkUrlInput.value = "";
+	linkKeyInput.value = "";
 }
 
 function updateLink() 
 {
-	var linkTextInput = document.getElementById("updateLinkText");
+	var linkTitleInput = document.getElementById("updateLinkTitle");
+	var linkUrlInput = document.getElementById("updateLinkUrl");
+	var linkKeyInput = document.getElementById("updateLinkKey");
 	var linkIndexInput = document.getElementById("linkIndex");
 	var index = parseInt(linkIndexInput.value);
 	if (index != Number.NaN)
 	{
-		_links[index] = linkTextInput.value;
+		_links[index] = {title: linkTitleInput.value, url: linkUrlInput.value, key: linkKeyInput.value};
 		showLinks();
-		linkTextInput.value = "";
+		linkTitleInput.value = "";
+		linkUrlInput.value = "";
+		linkKeyInput.value = "";
 		linkIndexInput.value = "";
 	}
 	else
@@ -53,9 +61,13 @@ function editLink()
 	var index = Number(editBtn.id);
 	if (typeof index !== "undefined")
 	{
-		var linkTextInput = document.getElementById("updateLinkText");
+		var linkTitleInput = document.getElementById("updateLinkTitle");
+		var linkUrlInput = document.getElementById("updateLinkUrl");
+		var linkKeyInput = document.getElementById("updateLinkKey");
 		var linkIndexInput = document.getElementById("linkIndex");
-		linkTextInput.value = _links[index];
+		linkTitleInput.value = _links[index].title;
+		linkUrlInput.value = _links[index].url;
+		linkKeyInput.value = _links[index].key;
 		linkIndexInput.value = index;
 		showUpdateButton();
 	}
@@ -97,7 +109,7 @@ function showLinks()
 		editBtn.type = "button";
 		editBtn.id = i;
 		editBtn.addEventListener("click", editLink);
-		linkDiv.textContent = _links[i];
+		linkDiv.textContent = _links[i].title + " " + _links[i].url + " " + _links[i].key;
 		linkDiv.appendChild(editBtn);
 		linkDiv.appendChild(removeBtn);
 		linksDiv.appendChild(linkDiv);

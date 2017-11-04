@@ -3,25 +3,52 @@
 <html>
   <head>
     <meta charset="utf-8">
+	<link rel="stylesheet" href="options.css"/>
   </head>
 
   <body>
 
     <form>
-		<h3>Links</h3>
+		<h3>Existing links</h3>
 		<div id="links">
 		</div>
 		<div id="newLinkDiv">
 			<h4>New link</h4>
-			<label>Link: <input type="text" id="newLinkText" ></label>
-			<button type="button" id="addLinkButton">Add</button>
+			<table>
+				<tr>
+					<th class="title">Title</th>
+					<th class="url">Url</th>
+					<th class="key">Key</th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr>
+					<td><input type="text" id="newLinkTitle" class="title"/></td>
+					<td><input type="text" id="newLinkUrl" class="url"/></td>
+					<td><input type="text" id="newLinkKey" class="key"/></td>
+					<td><button type="button" id="addLinkButton">Add</button></td>
+				</tr>
+			</table>
+			
 		</div>
 		<div id="updateLinkDiv" style="display:none">
 			<h4>Update link</h4>
-			<label>Link: <input type="text" id="updateLinkText" ><input type="hidden" id="linkIndex" ></label>
-			<button type="button" id="updateLinkButton">Update</button>
+			<table>
+				<tr>
+					<th class="title">Title</th>
+					<th class="url">Url</th>
+					<th class="key">Key</th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr>
+					<td><input type="text" id="updateLinkTitle" class="title"/></td>
+					<td><input type="text" id="updateLinkUrl" class="url"/></td>
+					<td><input type="text" id="updateLinkKey" class="key"/></td>
+					<td><button type="button" id="updateLinkButton">Update</button></td>
+				</tr>
+			</table>
+			<input type="hidden" id="linkIndex" />
 		</div>
-        <button type="submit">Save</button>
+        <button type="submit">Save your changes</button>
     </form>
 
     <script src="options.js"></script>

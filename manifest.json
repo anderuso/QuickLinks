@@ -3,7 +3,7 @@
 	"name": "QuickLinks",
 	"version": "0.1",
 
-	"description": "Create your own set of links with very quick access.",
+	"description": "Create your own set of links for very quick access to your favorite sites.",
 
 	"icons": {
 		"48": "icons/QuickLinks.png"
