@@ -12,42 +12,22 @@
 		<h3>Existing links</h3>
 		<div id="links">
 		</div>
-		<div id="newLinkDiv">
-			<h4>New link</h4>
-			<table>
-				<tr>
-					<th class="title">Title</th>
-					<th class="url">Url</th>
-					<th class="key">Key</th>
-					<th>&nbsp;</th>
-				</tr>
-				<tr>
-					<td><input type="text" id="newLinkTitle" class="title"/></td>
-					<td><input type="text" id="newLinkUrl" class="url"/></td>
-					<td><input type="text" id="newLinkKey" class="key"/></td>
-					<td><button type="button" id="addLinkButton">Add</button></td>
-				</tr>
-			</table>
-			
-		</div>
-		<div id="updateLinkDiv" style="display:none">
-			<h4>Update link</h4>
-			<table>
-				<tr>
-					<th class="title">Title</th>
-					<th class="url">Url</th>
-					<th class="key">Key</th>
-					<th>&nbsp;</th>
-				</tr>
-				<tr>
-					<td><input type="text" id="updateLinkTitle" class="title"/></td>
-					<td><input type="text" id="updateLinkUrl" class="url"/></td>
-					<td><input type="text" id="updateLinkKey" class="key"/></td>
-					<td><button type="button" id="updateLinkButton">Update</button></td>
-				</tr>
-			</table>
-			<input type="hidden" id="linkIndex" />
-		</div>
+		<hr/>
+		<table>
+			<tr>
+				<th class="title">Title</th>
+				<th class="url">Url</th>
+				<th class="key">Key</th>
+				<th>&nbsp;</th>
+			</tr>
+			<tr>
+				<td><input type="text" id="linkTitle" class="title"/></td>
+				<td><input type="text" id="linkUrl" class="url"/></td>
+				<td><input type="text" id="linkKey" class="key"/></td>
+				<td><button type="button" id="addUpdateLinkButton" disabled="true">Add</button></td>
+			</tr>
+		</table>
+		<input type="hidden" id="linkIndex" />
         <button type="submit">Save your changes</button>
     </form>
 
