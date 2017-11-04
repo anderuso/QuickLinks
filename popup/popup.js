@@ -6,10 +6,11 @@ function onError(error) {
   console.log(`Error: ${error}`);
 }
 
-function createLink(linkUrl) {
+function createLink(linkData) {
 	var linkDiv = document.createElement('div');
 	linkDiv.setAttribute("class", "button site");
-	linkDiv.textContent = linkUrl;
+	linkDiv.textContent = linkData.title;
+	linkDiv.url = linkData.url;
 	
 	return linkDiv;
 }
@@ -37,9 +38,9 @@ getting.then(onGot, onError);
 
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("site")) {
-    var chosenBeastURL = e.target.textContent;
+    var chosenUrl = e.target.url;
 
-	var creating = browser.tabs.create({url: "https://" + chosenBeastURL});
+	var creating = browser.tabs.create({url: chosenUrl});
 	creating.then(onCreated, onError);
 	window.close();
   }
