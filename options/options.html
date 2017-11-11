@@ -9,9 +9,9 @@
   <body>
 
     <form>
-		<h3>Existing links</h3>
-		<div id="links">
-		</div>
+		<h2>Existing links</h2>
+		<table id="links">
+		</table>
 		<hr/>
 		<table>
 			<tr>
@@ -23,7 +23,7 @@
 			<tr>
 				<td><input type="text" id="linkTitle" class="title"/></td>
 				<td><input type="text" id="linkUrl" class="url"/></td>
-				<td><input type="text" id="linkKey" class="key"/></td>
+				<td><input type="text" id="linkKey" class="key" maxlength="1"/></td>
 				<td><button type="button" id="addUpdateLinkButton" disabled="true">Add</button></td>
 			</tr>
 		</table>

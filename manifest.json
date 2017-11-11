@@ -16,13 +16,13 @@
 	],
 
 	"browser_action": {
-		"browser_style": false,
+		"browser_style": true,
 		"default_icon": "icons/QuickLinks.png",
 		"default_title": "QuickLinks",
 		"default_popup": "popup/popup.html"
 	},
 
 	"options_ui": {
-		"page": "options.html"
+		"page": "options/options.html"
 	}
 }
