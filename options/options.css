@@ -10,6 +10,18 @@ th.url {
 th.key {
 	width: 5%;
 }
+td.title {
+	width: 20%;
+	font-size: 1.25em;
+}
+td.url {
+	width: 75%;
+	font-size: 1.25em;
+}
+td.key {
+	width: 5%;
+	font-size: 1.25em;
+}
 
 input.title {
 	width: 95%;

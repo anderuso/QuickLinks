@@ -116,25 +116,41 @@ function removeLink()
 
 function showLinks() 
 {
-	var linksDiv = document.getElementById("links");
-	linksDiv.innerHTML = "";
+	var table = document.getElementById("links");
+    console.log(`table: ${table}`);
+	table.innerHTML = "";
 	for (i = 0; i < _links.length; i++)
 	{
-		var linkDiv = document.createElement("div");
-		var removeBtn = document.createElement("button");
-		removeBtn.innerHTML = "Remove";
-		removeBtn.type = "button";
-		removeBtn.id = i;
-		removeBtn.addEventListener("click", removeLink);
+		var tr = document.createElement("tr");
+		var td = document.createElement("td");
+		td.className  = "title";
+		td.textContent = _links[i].title;
+		tr.appendChild(td);
+		var td = document.createElement("td");
+		td.className  = "url";
+		td.textContent = _links[i].url;
+		tr.appendChild(td);
+		var td = document.createElement("td");
+		td.className  = "key";
+		td.textContent = _links[i].key;
+		tr.appendChild(td);
+		var td = document.createElement("td");
 		var editBtn = document.createElement("button");
 		editBtn.innerHTML = "Edit";
 		editBtn.type = "button";
 		editBtn.id = i;
 		editBtn.addEventListener("click", editLink);
-		linkDiv.textContent = _links[i].title + " " + _links[i].url + " " + _links[i].key;
-		linkDiv.appendChild(editBtn);
-		linkDiv.appendChild(removeBtn);
-		linksDiv.appendChild(linkDiv);
+		td.appendChild(editBtn);
+		tr.appendChild(td);
+		var td = document.createElement("td");
+		var removeBtn = document.createElement("button");
+		removeBtn.innerHTML = "Remove";
+		removeBtn.type = "button";
+		removeBtn.id = i;
+		removeBtn.addEventListener("click", removeLink);
+		td.appendChild(removeBtn);
+		tr.appendChild(td);
+		table.appendChild(tr);
 	}
 }
 
