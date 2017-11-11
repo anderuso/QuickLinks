@@ -1,20 +1,19 @@
 
 html, body {
 	background-color: #101010;
-	width: 11em;
 }
 
 
 .button {
-	padding: 2%;
-	margin: auto;
-	text-align: left;
-	cursor: pointer;
-	max-width: 10em;
-	width: 100%;
+	padding: 0.5em;
 	border-width: 1px;
 	border-style: none none solid;
 	border-color: red;
+	font-size: 1.2em;
+}
+
+.buttons {
+	margin: 0.7em;
 }
 
 .site {
