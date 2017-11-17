@@ -26,5 +26,12 @@
 
 	"options_ui": {
 		"page": "options/options.html"
+	},
+	
+	"applications": {
+		"gecko": {
+			"id": "58e78ac522594027d5362a36033ee5d0fdb48db1@quicklinks",
+			"strict_min_version": "57.0"
+		}
 	}
 }
