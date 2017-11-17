@@ -6,7 +6,9 @@
 	"description": "Create your own set of links for very quick access to your favorite sites.",
 
 	"icons": {
-		"48": "icons/QuickLinks.png"
+		"48": "icons/QuickLinks48.png",
+		"96": "icons/QuickLinks96.png",
+		"128": "icons/QuickLinks128.png"
 	},
 
 	"permissions":
@@ -17,7 +19,7 @@
 
 	"browser_action": {
 		"browser_style": true,
-		"default_icon": "icons/QuickLinks.png",
+		"default_icon": "icons/QuickLinks48.png",
 		"default_title": "QuickLinks",
 		"default_popup": "popup/popup.html"
 	},
