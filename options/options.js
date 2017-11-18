@@ -2,10 +2,10 @@ _links = [];
 
 function saveOptions(e) 
 {
-  e.preventDefault();
-  browser.storage.local.set({
-    links: _links
-  });
+	e.preventDefault();
+	browser.storage.local.set({
+		links: _links
+	});
 }
 
 function showUpdateButton()
@@ -27,12 +27,10 @@ function addOrUpdateLink()
 	var button = document.getElementById("addUpdateLinkButton");
 	if (button.textContent == "Add")
 	{
-		console.log("addLink");
 		addLink();
 	}
 	else if (button.textContent == "Update")
 	{
-		console.log("updateLink");
 		updateLink();
 	}
 	else
@@ -117,8 +115,7 @@ function removeLink()
 function showLinks() 
 {
 	var table = document.getElementById("links");
-    console.log(`table: ${table}`);
-	table.innerHTML = "";
+    table.innerHTML = "";
 	for (i = 0; i < _links.length; i++)
 	{
 		var tr = document.createElement("tr");
