@@ -9,11 +9,10 @@ function notify(message)
 
 function onCreated(windowInfo)
 {
-  console.log(`Created window: ${windowInfo.id}`);
+    console.log(`Created window: ${windowInfo.id}`);
 }
 
 function onError(error)
 {
-  console.log(`Error: ${error}`);
+    console.log(`Error: ${error}`);
 }
-
