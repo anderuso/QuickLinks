@@ -1,21 +1,34 @@
-function onCreated(windowInfo) {
-  console.log(`Created window: ${windowInfo.id}`);
+function onCreated(windowInfo)
+{
+    console.log(`Created window: ${windowInfo.id}`);
 }
 
-function onError(error) {
-  console.log(`Error: ${error}`);
+function onError(error)
+{
+    console.log(`Error: ${error}`);
 }
 
-function createLink(linkData) {
-    var linkDiv = document.createElement('div');
-    linkDiv.setAttribute("class", "button site");
-    linkDiv.textContent = linkData.title;
-    linkDiv.url = linkData.url;
+function createLink(linkData)
+{
+    var linkRow = document.createElement('tr');
+    linkRow.setAttribute("class", "row site");
+    var titleCell = document.createElement('td');
+    titleCell.textContent = linkData.title;
+    titleCell.setAttribute("class", "title link");
+    titleCell.url = linkData.url;
+    var keyCell = document.createElement('td');
+    keyCell.textContent = linkData.key;
+    keyCell.setAttribute("class", "key link");
+    keyCell.url = linkData.url;
 
-    return linkDiv;
+    linkRow.appendChild(titleCell);
+    linkRow.appendChild(keyCell);
+
+    return linkRow;
 }
 
-function onGotLinkLoaded(item) {
+function onGotLinkLoaded(item)
+{
     var linksDiv = document.getElementById("links");
     linksDiv.innerHTML = "";
     if (item.links)
@@ -36,7 +49,7 @@ function onGotLinkLoaded(item) {
 document.addEventListener("click", (e) => {
     if (typeof e.target.classList !== "undefined")
     {
-        if (e.target.classList.contains("site"))
+        if (e.target.classList.contains("link"))
         {
             var chosenUrl = e.target.url;
 

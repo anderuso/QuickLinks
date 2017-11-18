@@ -1,37 +1,59 @@
 
 html, body {
-	background-color: #101010;
+    background-color: #101010;
 }
 
 
-.button {
-	padding: 0.5em;
-	border-width: 1px;
-	border-style: none none solid;
-	border-color: red;
-	font-size: 1.2em;
+.link {
 }
 
 .buttons {
-	margin: 0.7em;
+    margin: 0.5em;
 }
 
 .site {
-	background-color: #101010;
-	color: #DDDDDD;
+    background-color: #101010;
+    color: #DDDDDD;
 }
 
 .site:hover {
-	background-color: #707070;
-	color: #DDDDDD;
+    background-color: #707070;
+    color: #DDDDDD;
 }
 
 .options {
-	background-color: #303030;
-	color: #EEEEEE;
+    background-color: #303030;
+    color: #EEEEEE;
 }
 
 .options:hover {
-	background-color: #EEEEEE;
-	color: black;
+    background-color: #EEEEEE;
+    color: black;
+}
+
+table
+{
+    border-collapse:collapse;
+}
+
+.row
+{
+    padding: 0.2em;
+    border-width: 1px;
+    border-style: none none solid;
+    border-color: red;
+    font-size: 1.2em;
+}
+
+.title
+{
+    text-align: left;
+    padding: 0.2em;
+}
+
+.key
+{
+    width: 2em;
+    text-align: right;
+    padding: 0.2em;
 }
