@@ -3,9 +3,43 @@ _links = [];
 function saveOptions(e) 
 {
 	e.preventDefault();
+    var currentActivation = getActivation();
 	browser.storage.local.set({
-		links: _links
+		links: _links,
+        activation: currentActivation
 	});
+}
+
+function getActivation()
+{
+    var activation = {ctrlKey: false, altKey: false, shiftKey: false, key: ""};
+    var ctrlKey = document.getElementById("ctrlCheck");
+    var altKey = document.getElementById("altCheck");
+    var shiftKey = document.getElementById("shiftCheck");
+    var activationKey = document.getElementById("activationKey");
+    if (ctrlKey && altKey && shiftKey && activationKey && activationKey.value != "")
+    {
+        activation.ctrlKey = ctrlKey.checked;
+        activation.altKey = altKey.checked;
+        activation.shiftKey = shiftKey.checked;
+        activation.key = activationKey.value;
+    }
+    return activation;
+}
+
+function showActivation(activation)
+{
+    var ctrlKey = document.getElementById("ctrlCheck");
+    var altKey = document.getElementById("altCheck");
+    var shiftKey = document.getElementById("shiftCheck");
+    var activationKey = document.getElementById("activationKey");
+    if (ctrlKey && altKey && shiftKey && activationKey && activation)
+    {
+        ctrlKey.checked = activation.ctrlKey;
+        altKey.checked = activation.altKey;
+        shiftKey.checked = activation.shiftKey;
+        activationKey.value = activation.key;
+    }
 }
 
 function showUpdateButton()
@@ -170,27 +204,58 @@ function validateUrl()
 
 function restoreOptions() 
 {
-  function setCurrentChoice(result) 
-  {
-    _links = result.links;
-	if (typeof _links === "undefined") 
-	{
-		_links = [];
-	}
-	showLinks();
-  }
+    function setLinks(result) 
+    {
+        _links = result.links;
+        if (typeof _links === "undefined") 
+        {
+            _links = [];
+        }
+        showLinks();
+    }
 
-  function onError(error) 
-  {
-    console.log(`Error: ${error}`);
-  }
+    function setActivation(result) 
+    {
+        showActivation(result.activation);
+    }
 
-  var getting = browser.storage.local.get("links");
-  getting.then(setCurrentChoice, onError);
+    function onError(error) 
+    {
+        console.log(`Error: ${error}`);
+    }
+
+    var gettingLinks = browser.storage.local.get("links");
+    gettingLinks.then(setLinks, onError);
+    
+    var gettingActivation = browser.storage.local.get("activation");
+    gettingActivation.then(setActivation, onError);
 }
+
+function openTab(tabName, button) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    button.className += " active";
+} 
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("form").addEventListener("submit", saveOptions);
 document.getElementById("addUpdateLinkButton").addEventListener("click", addOrUpdateLink);
 document.getElementById("linkTitle").addEventListener("input", validateUrl);
 document.getElementById("linkUrl").addEventListener("input", validateUrl);
+document.getElementById("existingLinksTab").addEventListener("click", function(){openTab("ExistingLinks", this)});
+document.getElementById("activationTab").addEventListener("click", function(){openTab("Activation", this)});
